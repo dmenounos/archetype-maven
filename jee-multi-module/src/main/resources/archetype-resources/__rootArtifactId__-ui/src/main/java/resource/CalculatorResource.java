@@ -1,8 +1,8 @@
 package ${package}.resource;
 
-import ${package}.service.CalculatorService;
+import ${package}.service.CalculatorWS;
+import ${package}.service.CalculatorWSService;
 
-import javax.inject.Inject;
 import javax.enterprise.context.RequestScoped;
 import javax.json.Json;
 import javax.json.JsonObjectBuilder;
@@ -16,14 +16,15 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import javax.xml.ws.WebServiceRef;
 import java.net.URI;
 
 @RequestScoped
 @Path("/calculator")
 public class CalculatorResource {
 
-	@Inject
-	private CalculatorService service;
+	@WebServiceRef(CalculatorWSService.class)
+	private CalculatorWS service;
 
 	@Context
 	private UriInfo uriInfo;

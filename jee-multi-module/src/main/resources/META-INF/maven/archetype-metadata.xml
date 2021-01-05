@@ -5,6 +5,35 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd">
 
+	<requiredProperties>
+
+		<!--
+		The reference address of the WS. It is present in the service class, the client and the WSDL.
+		
+		In case it is not specified in the service class, it gets its package inverted as a domain.
+		This is not a good practice; the package and the domain should not be coupled together.
+		
+		This property is applied (1) on the service class and (2) on the stored WSDL file from which
+		the client is generated. Since (1) affects source code, we make this replacement happen
+		at project generation time, instead of build time.
+		-->
+		<requiredProperty key="targetNamespace">
+			<defaultValue>http://service.example.org/wsdl</defaultValue>
+		</requiredProperty>
+
+		<!--
+		The reference address of the WSDL. It is present in the generated client.
+
+		It does not have to relate with the targetNamespace. Unlike the targetNamespace this URL
+		will be accessed physically by the generated client at runtime during its initialization.
+		However, it can be mapped to another location with the jax-ws-catalog.xml file.
+		-->
+		<requiredProperty key="wsdlLocation">
+			<defaultValue>http://service.example.org/wsdl</defaultValue>
+		</requiredProperty>
+
+	</requiredProperties>
+
 	<fileSets>
 
 		<fileSet filtered="true" encoding="UTF-8">
@@ -43,6 +72,75 @@
 		</module>
 
 		<module id="${rootArtifactId}-service-api" dir="__rootArtifactId__-service-api" name="${rootArtifactId}-service-api">
+			<fileSets>
+				<fileSet filtered="true" packaged="true" encoding="UTF-8">
+					<directory>src/main/java</directory>
+					<includes>
+						<include>**/*.properties</include>
+						<include>**/*.java</include>
+						<include>**/*.xml</include>
+						<include>**/*.txt</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8">
+					<directory>src/main/resources</directory>
+					<includes>
+						<include>**/*.wsdl</include>
+						<include>**/*.properties</include>
+						<include>**/*.json</include>
+						<include>**/*.xml</include>
+						<include>**/*.txt</include>
+					</includes>
+				</fileSet>
+			</fileSets>
+		</module>
+
+		<module id="${rootArtifactId}-soap" dir="__rootArtifactId__-soap" name="${rootArtifactId}-soap">
+			<fileSets>
+				<fileSet filtered="true" packaged="true" encoding="UTF-8">
+					<directory>src/main/java</directory>
+					<includes>
+						<include>**/*.properties</include>
+						<include>**/*.java</include>
+						<include>**/*.xml</include>
+						<include>**/*.txt</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8">
+					<directory>src/main/resources</directory>
+					<includes>
+						<include>**/*.wsdl</include>
+						<include>**/*.properties</include>
+						<include>**/*.json</include>
+						<include>**/*.xml</include>
+						<include>**/*.txt</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8">
+					<directory>src/main/webapp</directory>
+					<includes>
+						<include>/WEB-INF/*.properties</include>
+						<include>/WEB-INF/*.xml</include>
+					</includes>
+				</fileSet>
+				<fileSet encoding="UTF-8">
+					<directory>src/main/webapp</directory>
+					<includes>
+						<include>**/*.html</include>
+						<include>**/*.tag</include>
+						<include>**/*.jsp</include>
+						<include>**/*.js</include>
+						<include>**/*.css</include>
+						<include>**/*.gif</include>
+						<include>**/*.jpg</include>
+						<include>**/*.png</include>
+						<include>**/*.ico</include>
+					</includes>
+				</fileSet>
+			</fileSets>
+		</module>
+
+		<module id="${rootArtifactId}-soap-api" dir="__rootArtifactId__-soap-api" name="${rootArtifactId}-soap-api">
 			<fileSets>
 				<fileSet filtered="true" packaged="true" encoding="UTF-8">
 					<directory>src/main/java</directory>

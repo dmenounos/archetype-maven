@@ -13,6 +13,8 @@
 	<modules>
 		<module>${artifactId}-service-api</module>
 		<module>${artifactId}-service</module>
+		<module>${artifactId}-soap-api</module>
+		<module>${artifactId}-soap</module>
 		<module>${artifactId}-ui</module>
 	</modules>
 
@@ -43,6 +45,16 @@
 			<dependency>
 				<groupId>${groupId}</groupId>
 				<artifactId>${artifactId}-service</artifactId>
+				<version>${version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${groupId}</groupId>
+				<artifactId>${artifactId}-soap-api</artifactId>
+				<version>${version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${groupId}</groupId>
+				<artifactId>${artifactId}-soap</artifactId>
 				<version>${version}</version>
 			</dependency>
 			<dependency>
@@ -118,6 +130,9 @@
 				<wildfly.port>9990</wildfly.port>
 				<wildfly.username>wildfly</wildfly.username>
 				<wildfly.password>wildfly</wildfly.password>
+				<!-- Used by: ${artifactId}-soap-api resource plugin -->
+				<soap.address.baseurl>http://localhost:8080</soap.address.baseurl>
+				<soap.address.postfix />
 			</properties>
 		</profile>
 
@@ -131,6 +146,9 @@
 				<weblogic.port>7001</weblogic.port>
 				<weblogic.username>weblogic</weblogic.username>
 				<weblogic.password>weblogic</weblogic.password>
+				<!-- Used by: ${artifactId}-soap-api resource plugin -->
+				<soap.address.baseurl>http://localhost:8080</soap.address.baseurl>
+				<soap.address.postfix>Service</soap.address.postfix>
 			</properties>
 		</profile>
 

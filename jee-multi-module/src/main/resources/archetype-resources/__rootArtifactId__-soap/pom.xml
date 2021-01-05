@@ -17,7 +17,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>${groupId}</groupId>
-			<artifactId>${rootArtifactId}-soap-api</artifactId>
+			<artifactId>${rootArtifactId}-service</artifactId>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
