@@ -16,6 +16,7 @@
 		<module>${artifactId}-soap-api</module>
 		<module>${artifactId}-soap</module>
 		<module>${artifactId}-ui</module>
+		<module>${artifactId}-ear</module>
 	</modules>
 
 	<properties>
@@ -60,6 +61,11 @@
 			<dependency>
 				<groupId>${groupId}</groupId>
 				<artifactId>${artifactId}-ui</artifactId>
+				<version>${version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${groupId}</groupId>
+				<artifactId>${artifactId}-ear</artifactId>
 				<version>${version}</version>
 			</dependency>
 
