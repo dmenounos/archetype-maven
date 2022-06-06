@@ -76,5 +76,5 @@ fi
 cd "$OUT_DIR"
 
 mvn archetype:generate -DarchetypeCatalog=local -DinteractiveMode=false \
--DarchetypeGroupId=org.example -DarchetypeArtifactId=jee-simple-archetype -DarchetypeVersion=2.0.0-SNAPSHOT \
+-DarchetypeGroupId=org.example -DarchetypeArtifactId=jee-simple-archetype -DarchetypeVersion=3.0.0-SNAPSHOT \
 -DgroupId=$GROUP_ID -DartifactId=$ARTIFACT_ID

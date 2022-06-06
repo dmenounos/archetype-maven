@@ -18,12 +18,12 @@
 		<dependency>
 			<groupId>${groupId}</groupId>
 			<artifactId>${rootArtifactId}-soap-api</artifactId>
-			<scope>compile</scope>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<scope>compile</scope>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax</groupId>
@@ -46,63 +46,5 @@
 			</resource>
 		</resources>
 	</build>
-
-	<profiles>
-
-		<!-- The following profiles require properties for the environment details. -->
-		<!-- These can be passed through another profile or as cli parameters. -->
-
-		<!-- A profile that deploys the application to a WildFly server. -->
-		<!-- E.g., mvn install -P wildfly-env,wildfly-deploy -->
-
-		<profile>
-			<id>wildfly-deploy</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.wildfly.plugins</groupId>
-						<artifactId>wildfly-maven-plugin</artifactId>
-						<version>1.0.2.Final</version>
-						<executions>
-							<execution>
-								<phase>package</phase>
-								<goals>
-									<goal>deploy</goal>
-								</goals>
-								<configuration>
-									<force>true</force>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-
-		<!-- A profile that undeploys the application from a WildFly server. -->
-		<!-- E.g., mvn install -P wildfly-env,wildfly-undeploy -->
-
-		<profile>
-			<id>wildfly-undeploy</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.wildfly.plugins</groupId>
-						<artifactId>wildfly-maven-plugin</artifactId>
-						<version>1.0.2.Final</version>
-						<executions>
-							<execution>
-								<phase>package</phase>
-								<goals>
-									<goal>undeploy</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-
-	</profiles>
 
 </project>

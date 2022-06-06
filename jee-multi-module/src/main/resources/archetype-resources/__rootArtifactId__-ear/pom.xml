@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>${groupId}</groupId>
+		<artifactId>${rootArtifactId}</artifactId>
+		<version>${version}</version>
+	</parent>
+
+	<artifactId>${artifactId}</artifactId>
+	<packaging>ear</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>${groupId}</groupId>
+			<artifactId>${rootArtifactId}-service-api</artifactId>
+			<version>${version}</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>${groupId}</groupId>
+			<artifactId>${rootArtifactId}-service</artifactId>
+			<version>${version}</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>${groupId}</groupId>
+			<artifactId>${rootArtifactId}-soap-api</artifactId>
+			<version>${version}</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>${groupId}</groupId>
+			<artifactId>${rootArtifactId}-soap</artifactId>
+			<version>${version}</version>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>${groupId}</groupId>
+			<artifactId>${rootArtifactId}-ui</artifactId>
+			<version>${version}</version>
+			<type>war</type>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>${rootArtifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>${version.maven-ear-plugin}</version>
+				<configuration>
+					<version>6</version>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<ejbModule>
+						<groupId>${groupId}</groupId>
+						<artifactId>${rootArtifactId}-service</artifactId>
+					</ejbModule>
+					<webModule>
+						<groupId>${groupId}</groupId>
+						<artifactId>${rootArtifactId}-soap</artifactId>
+					</webModule>
+					<webModule>
+						<groupId>${groupId}</groupId>
+						<artifactId>${rootArtifactId}-ui</artifactId>
+					</webModule>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+
+		<!-- The following profiles require properties for the environment details. -->
+		<!-- These can be passed through another profile or as cli parameters. -->
+
+		<!-- A profile that deploys the application to a WildFly server. -->
+		<!-- E.g., mvn install -P wildfly-env,wildfly-deploy -->
+
+		<profile>
+			<id>wildfly-deploy</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.wildfly.plugins</groupId>
+						<artifactId>wildfly-maven-plugin</artifactId>
+						<version>1.0.2.Final</version>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>deploy</goal>
+								</goals>
+								<configuration>
+									<force>true</force>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<!-- A profile that undeploys the application from a WildFly server. -->
+		<!-- E.g., mvn install -P wildfly-env,wildfly-undeploy -->
+
+		<profile>
+			<id>wildfly-undeploy</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.wildfly.plugins</groupId>
+						<artifactId>wildfly-maven-plugin</artifactId>
+						<version>1.0.2.Final</version>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>undeploy</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+	</profiles>
+
+</project>

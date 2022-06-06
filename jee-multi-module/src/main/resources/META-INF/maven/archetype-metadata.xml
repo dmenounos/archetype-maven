@@ -47,6 +47,8 @@
 
 	<modules>
 
+		<module id="${rootArtifactId}-ear" dir="__rootArtifactId__-ear" name="${rootArtifactId}-ear" />
+
 		<module id="${rootArtifactId}-service" dir="__rootArtifactId__-service" name="${rootArtifactId}-service">
 			<fileSets>
 				<fileSet filtered="true" packaged="true" encoding="UTF-8">
