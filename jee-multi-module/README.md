@@ -9,6 +9,14 @@
 
 - Sample of a EJB Stateless service.
 
+### SOAP API module:
+
+- Client interfaces and classes for the SOAP service.
+
+### SOAP module:
+
+- Sample of a SOAP JAX-WS service.
+
 ### UI module:
 
 - Sample of a REST JAX-RS resource.
@@ -32,12 +40,12 @@ mvn archetype:generate -DarchetypeCatalog=local
 
 or invoke mvn and provide project information as parameters:
 mvn archetype:generate -DarchetypeCatalog=local -DinteractiveMode=false \
--DarchetypeGroupId=org.example -DarchetypeArtifactId=jee-simple-archetype -DarchetypeVersion=1.0.0-SNAPSHOT \
+-DarchetypeGroupId=org.example -DarchetypeArtifactId=jee-simple-archetype -DarchetypeVersion=2.0.0-SNAPSHOT \
 -DgroupId=YOUR_GROUPID -DartifactId=YOUR_ARTIFACTID
 ```
 
 ## Versions
 
-- Classic MVC + Modern REST + EJB Service  (WAR deployment) - jee-multi-module-1.0.0 <-- this version
-- Classic MVC + Modern REST + SOAP Service (WAR deployment) - jee-multi-module-2.0.0
+- Classic MVC + Modern REST + EJB Service  (WAR deployment) - jee-multi-module-1.0.0
+- Classic MVC + Modern REST + SOAP Service (WAR deployment) - jee-multi-module-2.0.0 <-- this version
 - Classic MVC + Modern REST + SOAP Service (EAR deployment) - jee-multi-module-3.0.0

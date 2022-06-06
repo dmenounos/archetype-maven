@@ -21,4 +21,5 @@ edit the pom file and adjust the appropriate profile for your environment.
 
 3. After the project artifacts are deployed check
 
+	http://localhost:8080/${rootArtifactId}-soap/CalculatorWS?wsdl
 	http://localhost:8080/${rootArtifactId}-ui/

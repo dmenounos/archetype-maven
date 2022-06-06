@@ -1,13 +1,14 @@
 package ${package}.controller;
 
-import ${package}.service.CalculatorService;
+import ${package}.service.CalculatorWS;
+import ${package}.service.CalculatorWSService;
 
-import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.ws.WebServiceRef;
 import java.net.URLEncoder;
 
 @WebServlet("/mvc/calculator")
@@ -15,8 +16,8 @@ public class CalculatorController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	@Inject
-	private CalculatorService service;
+	@WebServiceRef(CalculatorWSService.class)
+	private CalculatorWS service;
 
 	/**
 	 * Called upon a GET request.
