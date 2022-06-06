@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor 
+	name="jee-single-archetype"
+	xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd">
+
+	<fileSets>
+
+		<fileSet filtered="true" encoding="UTF-8">
+			<directory></directory>
+			<includes>
+				<include>README.md</include>
+			</includes>
+		</fileSet>
+
+		<fileSet filtered="true" packaged="true" encoding="UTF-8">
+			<directory>src/main/java</directory>
+			<includes>
+				<include>**/*.properties</include>
+				<include>**/*.java</include>
+				<include>**/*.xml</include>
+				<include>**/*.txt</include>
+			</includes>
+		</fileSet>
+		<fileSet filtered="true" encoding="UTF-8">
+			<directory>src/main/resources</directory>
+			<includes>
+				<include>**/*.wsdl</include>
+				<include>**/*.properties</include>
+				<include>**/*.json</include>
+				<include>**/*.xml</include>
+				<include>**/*.txt</include>
+			</includes>
+		</fileSet>
+		<fileSet filtered="true" encoding="UTF-8">
+			<directory>src/main/webapp</directory>
+			<includes>
+				<include>/WEB-INF/*.properties</include>
+				<include>/WEB-INF/*.xml</include>
+			</includes>
+		</fileSet>
+		<fileSet encoding="UTF-8">
+			<directory>src/main/webapp</directory>
+			<includes>
+				<include>**/*.html</include>
+				<include>**/*.tag</include>
+				<include>**/*.jsp</include>
+				<include>**/*.js</include>
+				<include>**/*.css</include>
+				<include>**/*.gif</include>
+				<include>**/*.jpg</include>
+				<include>**/*.png</include>
+				<include>**/*.ico</include>
+			</includes>
+		</fileSet>
+
+	</fileSets>
+
+</archetype-descriptor>
